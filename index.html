@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Catálogo Integral ALPACEL — Hecho por Lic. Cecilia Avila</title>
+<style>
+:root{--bg:#071028;--card:#0b1a3a;--muted:#9fb0d0;--text:#eef4ff;--accent:#3aa3ff;--accent2:#7c5cff;}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial; background:linear-gradient(180deg,var(--bg),#050914); color:var(--text);}
+header{padding:22px 16px 12px; max-width:1100px; margin:0 auto;}
+h1{margin:0 0 6px; font-size:28px; letter-spacing:.2px}
+.sub{margin:0; color:var(--muted); line-height:1.35}
+.badge{display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border:1px solid rgba(255,255,255,.12); border-radius:999px; color:var(--muted); font-size:12px; margin-top:12px}
+main{max-width:1100px;margin:0 auto;padding:0 16px 28px}
+.controls{display:grid; gap:10px; grid-template-columns:1fr; margin:16px 0 10px}
+@media (min-width:720px){.controls{grid-template-columns:1.4fr .8fr .6fr}}
+input,select,button{width:100%; padding:12px 12px; border-radius:12px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06); color:var(--text); outline:none}
+button{cursor:pointer; background:linear-gradient(135deg,var(--accent),var(--accent2)); border:0; font-weight:700}
+button.secondary{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); font-weight:600}
+.smallrow{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin:10px 0 18px}
+.pill{padding:8px 10px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); color:var(--muted); font-size:13px}
+.grid{display:grid; gap:12px; grid-template-columns:1fr}
+@media (min-width:720px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:980px){.grid{grid-template-columns:repeat(3,1fr)}}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.04)); border:1px solid rgba(255,255,255,.12); border-radius:18px; padding:14px}
+.card h3{margin:0 0 6px; font-size:16px}
+.meta{display:flex; gap:8px; flex-wrap:wrap; color:var(--muted); font-size:12px; margin-bottom:10px}
+.tag{padding:4px 8px; border-radius:999px; border:1px solid rgba(255,255,255,.14); background:rgba(0,0,0,.18)}
+.desc{margin:0; color:#dbe6ff; line-height:1.35; font-size:13.5px}
+hr.sep{border:0;border-top:1px solid rgba(255,255,255,.10); margin:16px 0}
+details{background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:14px; padding:10px 12px}
+details+details{margin-top:10px}
+summary{cursor:pointer; font-weight:700}
+footer{max-width:1100px;margin:0 auto;padding:16px; color:var(--muted); font-size:12px}
+a{color:inherit}
+</style>
+</head>
+<body>
+<header>
+  <h1>Catálogo Integral ALPACEL</h1>
+  <p class="sub">Hecho por Lic. Cecilia Avila<br/>Capacitación efectiva: lo que se ordena, se entiende; lo que se entiende, se vende con confianza. ✨</p>
+  <div class="badge">🧠 <strong>Modo lectura</strong> · Catálogo fijo (sin importar/descargar)</div>
+</header>
+
+<main>
+  <div class="controls">
+    <input id="q" type="search" placeholder="Buscar por nombre, código, línea, categoría… (ej. 'cbd', 'x-gear', '3876')"/>
+    <select id="cat"><option value="">Todas las categorías</option></select>
+    <select id="ord">
+      <option value="az">Orden: A → Z</option>
+      <option value="za">Orden: Z → A</option>
+      <option value="cod">Orden: Código</option>
+    </select>
+  </div>
+
+  <div class="smallrow">
+    <span class="pill" id="count">Total: 0 productos</span>
+    <button class="secondary" id="clear">Limpiar filtros</button>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <hr class="sep"/>
+
+  <h2 style="margin:0 0 10px;font-size:18px">🧠 Preguntas rápidas</h2>
+  <details><summary>¿Qué digo cuando el cliente pide “algo para el estrés”?</summary>
+    <div class="sub" style="margin-top:8px">Empieza con 2 preguntas: <b>¿qué tan fuerte es?</b> y <b>¿prefiere gomitas o gotas?</b>. Si busca CBD, ofrece opciones por intensidad y recuerda: “no exceder dosis; si hay embarazo/lactancia o enfermedad hepática, consulte al médico”.</div>
+  </details>
+  <details><summary>¿Cómo vendo X-Gear sin sonar “influencer”?</summary>
+    <div class="sub" style="margin-top:8px">Clásico y directo: <b>objetivo</b> (energía / músculo / hidratación), <b>modo de uso</b>, <b>contraindicaciones</b>. La confianza vende más que el hype.</div>
+  </details>
+  <details><summary>¿Qué hago si no encuentro un producto?</summary>
+    <div class="sub" style="margin-top:8px">Busca por <b>código</b> o por <b>línea</b>. Y si no está, me lo pasas en PDF/Excel y lo integramos a la siguiente versión.</div>
+  </details>
+</main>
+
+<footer>
+  Uso interno (capacitación). Hecho por Lic. Cecilia Avila. · Consejo con vibe Gen Z: ordena tu catálogo hoy y tu “yo” del futuro te lo va a agradecer. 😌
+</footer>
+
+<script>
+const PRODUCTS = [{"cod": "3781", "nombre": "Gomitas Calcio 1000mg (Multigomi)", "categoria": "Multigomi", "linea": "Multigomi", "sugerido": "", "solicitado": "", "descripcion": "Gomitas con calcio para apoyo óseo.", "tags": ["calcio", "gomitas"]}, {"cod": "3869", "nombre": "Hydrashot sabor fresa (X-Gear)", "categoria": "X-Gear", "linea": "X-Gear", "descripcion": "Tabletas efervescentes para hidratación práctica.", "tags": ["hidratación", "efervescente"]}, {"cod": "1060", "nombre": "Simigomitas (vitaminas y minerales)", "categoria": "Simigomitas", "linea": "Farmacias Similares", "descripcion": "Gomitas multivitamínicas sabores limón, naranja y piña.", "tags": ["multivitamínico", "gomitas"]}, {"cod": "2036", "nombre": "Gomitas con ácido glutámico Kids", "categoria": "Infantil", "linea": "Farmacias Similares", "descripcion": "Gomitas infantiles con ácido glutámico.", "tags": ["infantil", "cerebro"]}, {"cod": "1755", "nombre": "Gel post bronceado Aloe Vera", "categoria": "Cuidado de la piel", "linea": "Eternal Secret", "descripcion": "Gel de aloe vera para después del sol.", "tags": ["aloe", "piel"]}, {"cod": "3529", "nombre": "Acelerador de bronceado FPS 30", "categoria": "Cuidado de la piel", "linea": "Eternal Secret", "descripcion": "Acelerador de bronceado con protección FPS 30.", "tags": ["bronceado", "fps30"]}, {"cod": "2159", "nombre": "Rhodiola Rosea + Complejo B", "categoria": "Suplementos", "linea": "Farmacias Similares", "descripcion": "Suplemento para energía/estrés con rhodiola y complejo B.", "tags": ["energía", "estrés"]}, {"cod": "2214/2215", "nombre": "Simikrill cápsulas", "categoria": "Suplementos", "linea": "Farmacias Similares", "descripcion": "Omega-3 tipo krill (presentaciones).", "tags": ["omega3"]}, {"cod": "2219/2285", "nombre": "Forze VF Gold cápsulas", "categoria": "Suplementos", "linea": "Farmacias Similares", "descripcion": "Suplemento de apoyo (presentaciones).", "tags": ["vf", "energía"]}, {"cod": "3614", "nombre": "Proteína bebible sabor chocolate (X-Gear)", "categoria": "X-Gear", "linea": "X-Gear", "descripcion": "Proteína lista para beber, sabor chocolate.", "tags": ["proteína"]}, {"cod": "2452", "nombre": "CLA (X-Gear)", "categoria": "X-Gear", "linea": "X-Gear", "descripcion": "Ácido linoleico conjugado.", "tags": ["cla", "metabolismo"]}, {"cod": "3017", "nombre": "L-Carnitina + Cromo cápsulas", "categoria": "X-Gear", "linea": "X-Gear", "descripcion": "Suplemento con L-carnitina y cromo.", "tags": ["carnitina", "cromo"]}, {"cod": "2790", "nombre": "SimipZ + Valeriana cápsulas", "categoria": "Sueño/Relajación", "linea": "Farmacias Similares", "descripcion": "Apoyo a relajación (valeriana).", "tags": ["valeriana", "relajación"]}, {"cod": "651/710/1321/1322", "nombre": "SIMI VF Q10 cápsulas", "categoria": "Suplementos", "linea": "Farmacias Similares", "descripcion": "Coenzima Q10 (presentaciones).", "tags": ["q10"]}, {"cod": "3347", "nombre": "IBCAA+ polvo sabor frutos rojos", "categoria": "X-Gear", "linea": "X-Gear", "descripcion": "Aminoácidos BCAA en polvo.", "tags": ["bcaa"]}, {"cod": "3348", "nombre": "Whey Protein sabor chocolate", "categoria": "X-Gear", "linea": "X-Gear", "descripcion": "Proteína whey sabor chocolate.", "tags": ["whey"]}, {"cod": "3349", "nombre": "The Slender Blend proteína sabor chocolate", "categoria": "X-Gear", "linea": "X-Gear", "descripcion": "Mezcla tipo slender para control de peso.", "tags": ["slender"]}, {"cod": "3502", "nombre": "Pre-workout (X-Gear)", "categoria": "X-Gear", "linea": "X-Gear", "descripcion": "Pre-entreno para energía y rendimiento.", "tags": ["preworkout"]}, {"cod": "3504", "nombre": "Electrolitos en polvo (X-Gear)", "categoria": "X-Gear", "linea": "X-Gear", "descripcion": "Mezcla de electrolitos para hidratación.", "tags": ["electrolitos"]}, {"cod": "3548", "nombre": "Creatina en polvo (X-Gear)", "categoria": "X-Gear", "linea": "X-Gear", "descripcion": "Creatina monohidratada en polvo.", "tags": ["creatina"]}, {"cod": "3514", "nombre": "Fotoprotector solar con color 50+", "categoria": "Cuidado de la piel", "linea": "Eternal Secret", "descripcion": "Protector solar con color, FPS 50+.", "tags": ["protector", "fps50"]}, {"cod": "3656", "nombre": "Gelasimi Forte gomitas (Eternal Secret)", "categoria": "Belleza", "linea": "Eternal Secret", "descripcion": "Gomitas para cabello, uñas y piel.", "tags": ["colágeno", "biotina"]}, {"cod": "3706", "nombre": "Isolate Zero Carbs (X-Gear)", "categoria": "X-Gear", "linea": "X-Gear", "descripcion": "Proteína aislada, cero carbs.", "tags": ["proteína"]}, {"cod": "3740", "nombre": "KET+0 Cetonas BHB (X-Gear)", "categoria": "X-Gear", "linea": "X-Gear", "descripcion": "Cetonas BHB para dieta keto.", "tags": ["keto", "bhb"]}, {"cod": "3528", "nombre": "Tintura con CBD sabor naranja (estrés leve)", "categoria": "CBD", "linea": "Farmacias Similares", "descripcion": "Gotas con CBD para estrés leve.", "tags": ["cbd", "estrés"]}, {"cod": "3582", "nombre": "Tintura con CBD sabor naranja (estrés moderado)", "categoria": "CBD", "linea": "Farmacias Similares", "descripcion": "Gotas con CBD para estrés moderado.", "tags": ["cbd", "estrés"]}, {"cod": "3583", "nombre": "Tintura con CBD sabor naranja (estrés intenso)", "categoria": "CBD", "linea": "Farmacias Similares", "descripcion": "Gotas con CBD para estrés intenso.", "tags": ["cbd", "estrés"]}, {"cod": "3747", "nombre": "5-HTP + B6 + Mg cápsulas", "categoria": "Sueño/Ánimo", "linea": "Farmacias Similares", "descripcion": "Suplemento para descanso y estado de ánimo.", "tags": ["5htp", "magnesio"]}, {"cod": "4031", "nombre": "Gomitas Luteína 60 pzas (Multigomi)", "categoria": "Multigomi", "linea": "Multigomi", "descripcion": "Antioxidantes para la vista.", "tags": ["luteína", "vista"]}, {"cod": "4016", "nombre": "Gomitas Multi Hombre 60 pzas (Multigomi)", "categoria": "Multigomi", "linea": "Multigomi", "descripcion": "Gomitas diseñadas para el rendimiento del hombre.", "tags": ["hombre"]}, {"cod": "3533", "nombre": "Gomitas L-Teanina/Azahar sabor cereza (Animalin Nite)", "categoria": "Infantil", "linea": "Farmacias Similares", "descripcion": "Efecto relajante en niños.", "tags": ["teanina", "sueño"]}, {"cod": "3900", "nombre": "Gomitas multivitamínico infantil Simitolina", "categoria": "Infantil", "linea": "Farmacias Similares", "descripcion": "Auxiliar para desarrollo cerebral e intelectual.", "tags": ["infantil", "colina"]}, {"cod": "3930", "nombre": "Proteína bebible sabor vainilla (X-Gear)", "categoria": "X-Gear", "linea": "X-Gear", "descripcion": "Proteína lista para beber, sabor vainilla.", "tags": ["proteína"]}, {"cod": "3932", "nombre": "Gomitas L-Teanina + 5-HTP + Magnesio", "categoria": "Multigomi", "linea": "Multigomi", "descripcion": "Favorece sueño profundo.", "tags": ["teanina", "magnesio"]}, {"cod": "4015", "nombre": "Gomitas Magnesio 60 pza frutos (Multigomi)", "categoria": "Multigomi", "linea": "Multigomi", "descripcion": "Ayuda a disminuir estrés, regula función nerviosa.", "tags": ["magnesio", "estrés"]}, {"cod": "3931", "nombre": "Supermushroom Multigomi", "categoria": "Multigomi", "linea": "Multigomi", "descripcion": "Mezcla de 8 hongos para potenciar energía.", "tags": ["hongos", "energía"]}, {"cod": "3953/3758", "nombre": "Gomitas CBD", "categoria": "CBD", "linea": "Farmacias Similares", "descripcion": "Gomitas de CBD para estrés leve.", "tags": ["cbd"]}, {"cod": "3549", "nombre": "Triglicéridos de ácido caprílico (X-Gear)", "categoria": "X-Gear", "linea": "X-Gear", "descripcion": "Aceite MCT para energía inmediata.", "tags": ["mct", "energía"]}, {"cod": "3629", "nombre": "Electrolitos R-Gain mango con chile (X-Gear)", "categoria": "X-Gear", "linea": "X-Gear", "descripcion": "Electrolitos para hidratación extrema.", "tags": ["electrolitos"]}, {"cod": "3530", "nombre": "Protector solar eco friendly FPS 50+", "categoria": "Cuidado de la piel", "linea": "Eternal Secret", "descripcion": "Protector solar eco friendly FPS 50+.", "tags": ["protector", "fps50"]}, {"cod": "3028/2221", "nombre": "Protector solar FPS 50+ (toque seco)", "categoria": "Cuidado de la piel", "linea": "Eternal Secret", "descripcion": "Protector solar FPS 50+ con toque seco.", "tags": ["protector", "fps50"]}, {"cod": "3928", "nombre": "Serum despigmentante", "categoria": "Cuidado de la piel", "linea": "Eternal Secret", "descripcion": "Sérum para manchas.", "tags": ["despigmentante"]}, {"cod": "3945", "nombre": "Crema con caléndula para quemaduras", "categoria": "Cuidado de la piel", "linea": "Farmacias Similares", "descripcion": "Crema con caléndula para quemaduras e irritaciones.", "tags": ["caléndula"]}, {"cod": "3937", "nombre": "Cámara espaciadora", "categoria": "Dispositivos", "linea": "Farmacias Similares", "descripcion": "Cámara para inhaladores.", "tags": ["inhalador"]}, {"cod": "3876", "nombre": "Desenfriol-ito Plus", "categoria": "Antigripales", "linea": "Farmacias Similares", "descripcion": "Antigripal infantil.", "tags": ["antigripal"]}, {"cod": "3858", "nombre": "Chupón bebé 0-6 meses", "categoria": "Bebé", "linea": "Farmacias Similares", "descripcion": "Accesorio bebé 0-6 meses.", "tags": ["bebé"]}, {"cod": "3856", "nombre": "Nutrifórmula Confort 0-6 meses (650 g)", "categoria": "Bebé", "linea": "Farmacias Similares", "descripcion": "Fórmula infantil 0-6 meses.", "tags": ["fórmula"]}, {"cod": "3857", "nombre": "Nutrifórmula 6-12 meses (650 g)", "categoria": "Bebé", "linea": "Farmacias Similares", "descripcion": "Fórmula infantil 6-12 meses.", "tags": ["fórmula"]}, {"cod": "276", "nombre": "Enterogermina", "categoria": "Gastrointestinal", "linea": "Farmacias Similares", "descripcion": "Probiótico.", "tags": ["probiótico"]}, {"cod": "3723", "nombre": "Contorno de ojos antiarrugas", "categoria": "Cuidado de la piel", "linea": "Eternal Secret", "descripcion": "Crema contorno de ojos antiarrugas.", "tags": ["ojos"]}, {"cod": "3798", "nombre": "Vitamina C + Zinc gotas", "categoria": "Vitaminas", "linea": "Farmacias Similares", "descripcion": "Gotas con Vitamina C y Zinc.", "tags": ["vitamina c", "zinc"]}];
+
+const $ = (id)=>document.getElementById(id);
+const qEl = $("q"), catEl = $("cat"), ordEl = $("ord"), gridEl=$("grid"), countEl=$("count"), clearBtn=$("clear");
+
+function norm(s){
+  return (s||"").toString().toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu,"");
+}
+
+function buildCategories(){
+  const cats = Array.from(new Set(PRODUCTS.map(p=>p.categoria).filter(Boolean).map(c=>c.trim()))).sort((a,b)=>a.localeCompare(b,'es'));
+  cats.forEach(c=>{
+    const opt=document.createElement("option");
+    opt.value=c; opt.textContent=c;
+    catEl.appendChild(opt);
+  });
+}
+
+function score(p, qn){
+  const blob = norm([p.nombre,p.cod,p.linea,p.categoria,(p.tags||[]).join(" "),p.descripcion].join(" "));
+  return blob.includes(qn);
+}
+
+function sortItems(arr, mode){
+  const cp=[...arr];
+  if(mode==="za") cp.sort((a,b)=> (a.nombre||"").localeCompare(b.nombre||"",'es')*-1);
+  else if(mode==="cod") cp.sort((a,b)=> norm(a.cod).localeCompare(norm(b.cod),'es'));
+  else cp.sort((a,b)=> (a.nombre||"").localeCompare(b.nombre||"",'es'));
+  return cp;
+}
+
+function render(){
+  const q = norm(qEl.value.trim());
+  const cat = catEl.value;
+  let list = PRODUCTS.filter(p=> !cat || p.categoria===cat);
+  if(q) list = list.filter(p=>score(p,q));
+  list = sortItems(list, ordEl.value);
+
+  gridEl.innerHTML="";
+  list.forEach(p=>{
+    const card=document.createElement("div");
+    card.className="card";
+    const tags=(p.tags||[]).slice(0,5).map(t=>`<span class="tag">#${t}</span>`).join("");
+    card.innerHTML = `
+      <h3>${p.nombre||"Sin nombre"}</h3>
+      <div class="meta">
+        <span class="tag">Cód. ${p.cod||"—"}</span>
+        <span class="tag">${p.linea||"Sin línea"}</span>
+        <span class="tag">${p.categoria||"Sin categoría"}</span>
+      </div>
+      <p class="desc">${p.descripcion||""}</p>
+      <div class="meta" style="margin-top:10px">${tags}</div>
+    `;
+    gridEl.appendChild(card);
+  });
+
+  countEl.textContent = `Total: ${list.length} productos`;
+}
+
+clearBtn.addEventListener("click", ()=>{
+  qEl.value=""; catEl.value=""; ordEl.value="az"; render();
+});
+[qEl,catEl,ordEl].forEach(el=> el.addEventListener("input", render));
+buildCategories();
+render();
+</script>
+</body>
+</html>
