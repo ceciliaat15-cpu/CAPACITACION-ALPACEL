@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Catálogo Integral ALPACEL</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:#f4f6fb;
+  color:#333;
+}
+header{
+  background:#003b7a;
+  color:#fff;
+  padding:20px;
+}
+header h1{
+  margin:0;
+  font-size:22px;
+}
+header p{
+  margin:4px 0 0;
+  font-size:13px;
+  opacity:.9;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:16px;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #ccc;
+  margin-bottom:20px;
+  font-size:15px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:16px;
+}
+
+.card{
+  background:#fff;
+  border-radius:14px;
+  padding:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.card h3{
+  margin:6px 0 8px;
+  color:#003b7a;
+  font-size:16px;
+}
+
+.tag{
+  display:inline-block;
+  background:#e6eef8;
+  color:#003b7a;
+  padding:4px 10px;
+  border-radius:20px;
+  font-size:12px;
+  margin-bottom:6px;
+}
+
+.card p{
+  margin:4px 0;
+  font-size:13px;
+}
+
+small{
+  color:#555;
+}
+
+footer{
+  text-align:center;
+  padding:16px;
+  font-size:12px;
+  color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>📘 Catálogo Integral ALPACEL</h1>
+  <p>Material interno de capacitación • Uso exclusivo</p>
+</header>
+
+<div class="container">
+  <input type="text" id="buscador" placeholder="🔍 Buscar producto..." onkeyup="filtrar()">
+  <div class="grid" id="lista"></div>
+</div>
+
+<footer>
+  ALPACEL • Catálogo de apoyo farmacéutico
+</footer>
+
+<script>
+const PRODUCTOS = [
+
+{
+nombre:"Acelerador de Bronceado FPS 30 Eternal Secret",
+categoria:"Dermocosmética / Solar",
+sustancia:"Activadores de melanina + filtros UVA/UVB",
+presentacion:"Crema corporal",
+uso:"Auxiliar para acelerar e intensificar el bronceado natural de la piel",
+codigo:"3529",
+notas:"Uso externo. No aplicar en rostro. Aplicar 30 minutos antes de la exposición solar."
+},
+
+{
+nombre:"Protector Solar Eco Friendly FPS 50+",
+categoria:"Dermocosmética / Solar",
+sustancia:"Filtros solares de amplio espectro + vitamina E",
+presentacion:"Crema solar",
+uso:"Auxiliar para prevenir quemaduras solares y envejecimiento prematuro",
+codigo:"3530",
+notas:"Reaplicar cada 2 horas. Apto para toda la familia."
+},
+
+{
+nombre:"Mascarilla Facial Oro Hidrogel",
+categoria:"Dermocosmética / Facial",
+sustancia:"Colágeno hidrolizado",
+presentacion:"Mascarilla facial",
+uso:"Auxiliar para hidratar, reafirmar e iluminar la piel",
+codigo:"3532",
+notas:"Usar de 2 a 3 veces por semana. Todo tipo de piel."
+},
+
+{
+nombre:"Vitamina D3 5000 UI",
+categoria:"Suplementos / Defensas",
+sustancia:"Colecalciferol",
+presentacion:"Cápsulas",
+uso:"Auxiliar para fortalecer el sistema inmunológico",
+codigo:"3545",
+notas:"Adultos: 1 cápsula al día."
+},
+
+{
+nombre:"Creatina en Polvo X-Gear",
+categoria:"Deporte / Suplementos",
+sustancia:"Creatina monohidratada",
+presentacion:"Polvo",
+uso:"Auxiliar para mejorar la ganancia muscular junto con el ejercicio",
+codigo:"3548",
+notas:"Uso exclusivo en adultos. No usar en embarazo o lactancia."
+},
+
+{
+nombre:"Pepto-Bismol Tabletas Masticables",
+categoria:"Digestivo",
+sustancia:"Subsalicilato de bismuto",
+presentacion:"Tabletas masticables",
+uso:"Auxiliar para aliviar diarrea y malestar estomacal",
+codigo:"3561",
+notas:"No usar en embarazo. Uso temporal."
+},
+
+{
+nombre:"Árnica 6C Tabletas",
+categoria:"Homeopatía",
+sustancia:"Árnica montana 6C",
+presentacion:"Tabletas",
+uso:"Auxiliar para disminuir dolor y moretones por golpes leves",
+codigo:"3564",
+notas:"Disolver lentamente en la boca."
+},
+
+{
+nombre:"Antiséptico Nasal Cloro / Oxígeno",
+categoria:"Respiratorio",
+sustancia:"Especies activas de cloro y oxígeno",
+presentacion:"Solución nasal",
+uso:"Auxiliar para la limpieza y desinfección de las fosas nasales",
+codigo:"3538",
+notas:"Uso adulto. No exceder dosis."
+},
+
+{
+nombre:"Gomitas L-Teanina + Azahar",
+categoria:"Sueño y Relajación",
+sustancia:"L-Teanina, azahar, zinc",
+presentacion:"Gomitas",
+uso:"Auxiliar para favorecer la relajación y el descanso",
+codigo:"3533",
+notas:"Niños mayores de 6 años."
+}
+
+];
+
+function render(){
+  const lista = document.getElementById("lista");
+  lista.innerHTML = "";
+  PRODUCTOS.forEach(p=>{
+    lista.innerHTML += `
+      <div class="card">
+        <span class="tag">${p.categoria}</span>
+        <h3>${p.nombre}</h3>
+        <p><b>Sustancia:</b> ${p.sustancia}</p>
+        <p><b>Presentación:</b> ${p.presentacion}</p>
+        <p><b>Uso:</b> ${p.uso}</p>
+        <p><b>Código:</b> ${p.codigo}</p>
+        <small>${p.notas}</small>
+      </div>
+    `;
+  });
+}
+
+function filtrar(){
+  const texto = document.getElementById("buscador").value.toLowerCase();
+  document.querySelectorAll(".card").forEach(card=>{
+    card.style.display = card.innerText.toLowerCase().includes(texto) ? "block" : "none";
+  });
+}
+
+render();
+</script>
+
+</body>
+</html>
